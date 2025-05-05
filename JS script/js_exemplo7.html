@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+    <script>
+	window.onload = inicio;
+
+	function inicio() {
+
+        let botaosomar = document.getElementById('botaosomar');
+        let botaosubt = document.getElementById('botaosubt');
+        let botaomult = document.getElementById('botaomult');
+        let botaodiv = document.getElementById('botaodiv'); 
+        let botaoexpo = document.getElementById('botaoexpo');
+        let botaoresto = document.getElementById('botaoresto');
+        let botaoincre = document.getElementById('botaoincre');
+        let botaodecre = document.getElementById('botaodecre');
+
+        botaosomar.addEventListener('click', somar);
+        botaosubt.addEventListener('click', subt);
+        botaomult.addEventListener('click', mult);
+        botaodiv.addEventListener('click', div);
+        botaoexpo.addEventListener('click', expo);
+        botaoresto.addEventListener('click', resto);
+        botaoincre.addEventListener('click', incre);
+        botaodecre.addEventListener('click', decre);
+      
+	}
+
+    function somar() {
+        let saida = document.getElementById('saida');
+        let x = 7;
+        let y = 3;
+        saida.innerHTML = x + y;
+    }
+    function subt() {
+        let saida = document.getElementById('saida');
+        let x = 7;
+        let y = 3;
+        saida.innerHTML = x - y;
+    }
+    function mult() {
+        let saida = document.getElementById('saida');
+        let x = 7;
+        let y = 3;
+        saida.innerHTML = x * y;
+    }
+    function div() {
+        let saida = document.getElementById('saida');
+        let x = 7;
+        let y = 3;
+        saida.innerHTML = x / y;
+    }
+    function expo() {
+        let saida = document.getElementById('saida');
+        let x = 7;
+        let y = 3;
+        saida.innerHTML = x ** y;
+    }
+    function resto() {
+        let saida = document.getElementById('saida');
+        let x = 7;
+        let y = 3;
+        saida.innerHTML = x % y;
+    }
+    let contadorIncre = 0; 
+    function incre() {
+        let saida = document.getElementById('saida');
+        if (contadorIncre < 15) {
+            contadorIncre++;
+            saida.innerHTML = contadorIncre;
+        }
+    }
+
+    let contadorDecre = 10; 
+    function decre() {
+        let saida = document.getElementById('saida');
+        if (contadorDecre > 0) {
+            contadorDecre--;
+            saida.innerHTML = contadorDecre;
+        }
+    }
+    </script>
+</head>
+<body>
+    <p id="saida">JS esperando evento</p>
+    <input type="button" value="+" id="botaosomar">
+    <input type="button" value="-" id="botaosubt">
+    <input type="button" value="*" id="botaomult">
+    <input type="button" value="/" id="botaodiv">
+    <input type="button" value="^" id="botaoexpo">
+    <input type="button" value="%" id="botaoresto">
+    <input type="button" value="++" id="botaoincre">
+    <input type="button" value="--" id="botaodecre">
+</body>
+</html>
