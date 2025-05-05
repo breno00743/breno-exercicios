@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+    <script>
+        window.onload = main;
+        
+        function main() {
+            let elemento = document.getElementById('para');
+            elemento.style.fontSize = '32px';
+            elemento.style.color = 'blue';
+            let atual = 15;
+            let resultado = atual + 7;
+            elemento.innerHTML = resultado;
+        }
+    </script>
+</head>
+<body>  
+    <h1>Soma da idade daqui a 7 anos.</h1>
+    <p id="para">Com JS rodando.</p>
+</body>
+</html>
