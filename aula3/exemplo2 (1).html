@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campo</title>
+</head>
+<body>
+    <input type="text" id="entrada"><br>
+    <input type="button" id="verificar" value="Verificar"><br>
+    <p id="mensagem"></p>
+    <script>
+        document.getElementById('verificar').addEventListener('click', teste);
+
+        function teste () {
+            let entrada = document.getElementById("entrada").value;
+            entrada = parseFloat(entrada);
+            let mensagem = document.getElementById("mensagem");
+
+            if(entrada < 6){
+                mensagem.textContent = 'Reprovado!'
+            } else {
+                mensagem.textContent = 'Aprovado!'
+            }
+        }
+
+    </script>
+</body>
+</html>

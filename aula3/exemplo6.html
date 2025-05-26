@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversão USD</title>
+</head>
+<body>
+    <input type="button" value="Ver cotação" onclick="mostrarcotacao()"><br>
+    <p id="cotacao"></p> <br>
+    <input type="text" id="json-texto" placeholder="Insira o valor em R$"><br>
+    <input type="button" value="Converter" onclick="mostrar()"><br>
+    <p id="convertido"></p>
+</body>
+<script>
+let cotacaoDolar = 0;
+
+let objetoX = new XMLHttpRequest();
+objetoX.open('GET', 'https://economia.awesomeapi.com.br/last/USD-BRL', true);
+
+objetoX.onload = function() {
+  if(objetoX.status == 200) {
+    let resposta = JSON.parse(objetoX.responseText);
+    cotacaoDolar = parseFloat(resposta.USDBRL.bid);
+  }
+};
+objetoX.send();
+
+function mostrarcotacao() {
+    let cotacao = document.getElementById('cotacao');
+    cotacao.innerHTML = 'Valor atual do dólar: R$ ' + cotacaoDolar.toFixed(2);
+}
+
+function mostrar() {
+    let valor = parseFloat(document.getElementById('json-texto').value);
+    let convertido = document.getElementById('convertido');
+
+    if (cotacaoDolar && valor) {
+        let resultado = valor / cotacaoDolar;
+        convertido.innerHTML = 'Valor em dólares: $ ' + resultado.toFixed(2);
+    } 
+}
+</script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campo</title>
+</head>
+<body>
+    <input type="text" id="entrada"><br>
+    <input type="button" id="limpar" value="LIMPAR">
+    <input type="button" id="mostrar" value="MOSTRAR"><br>
+    <p id="saida"></p>
+
+    <script>
+        document.getElementById('mostrar').addEventListener('click', mostrar);
+        document.getElementById('limpar').addEventListener('click', limpar);
+
+        function mostrar () {
+            let entrada = document.getElementById("entrada").value;
+            let saida = document.getElementById("saida");
+            saida.textContent = entrada;
+        }
+
+        function limpar () {
+            let entrada = document.getElementById("entrada");
+            entrada.value = ''; 
+            let saida = document.getElementById("saida");
+            saida.textContent = ''; 
+        }
+    </script>
+</body>
+</html>
+
+
+

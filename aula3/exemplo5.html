@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON</title>
+</head>
+<body>
+    <input type="text" id="json-texto" placeholder="Insira o JSON"><br>
+    <input type="button" value="Converter" onclick="mostrar()"><br>
+    <p id="nome"></p>
+    <p id="idade"></p>
+</body>
+<script>
+
+    function mostrar() {
+        let jsonInsert = document.getElementById('json-texto').value;
+
+        let objeto = JSON.parse(jsonInsert);
+
+        let pnome = document.getElementById('nome');
+        pnome.textContent = objeto.nome;
+
+        let pidade = document.getElementById('idade');
+        pidade.textContent = objeto.idade;  
+
+    }
+</script>
+</html>

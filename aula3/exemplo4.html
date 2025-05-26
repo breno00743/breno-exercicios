@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carro</title>
+</head>
+<body>
+    <input type="text" id="carro" placeholder="Carro"><br>
+    <input type="text" id="ano" placeholder="Ano"><br>
+    <input type="text" id="cor" placeholder="Cor"><br>
+    <input type="button" id="criar" value="Criar"><br>
+    <input type="button" id="acelerar" value="Acelerar">
+    <input type="button" id="frear" value="Frear">
+    <h3>Velocidade: </h3>
+    <p id="saida"></p>
+
+    <script>
+        let carro;
+
+        function inicio() {
+            document.getElementById('criar').addEventListener('click', cria);
+            document.getElementById('acelerar').addEventListener('click', acelerar);
+            document.getElementById('frear').addEventListener('click', frear);
+        }
+
+        function cria() {
+            let nomeCarro = document.getElementById('carro').value;
+            let anoCarro = document.getElementById('ano').value;
+            let corCarro = document.getElementById('cor').value;
+
+
+            carro = {
+                nome: nomeCarro,
+                ano: anoCarro,
+                cor: corCarro,
+                velocidade: 0,
+                acelerar: function() {
+                    this.velocidade += 3;
+                },
+                frear: function() {
+                    if(this.velocidade == 1 ){
+                        this.velocidade = 0;
+                    }  else if (this.velocidade > 0) {
+                        this.velocidade -= 2;
+                    }
+                }
+            };
+        }
+
+        function acelerar() {
+            carro.acelerar();
+            let saida = document.getElementById("saida");
+            saida.textContent = carro.velocidade + ' km/h';
+        }
+
+        function frear() {
+            carro.frear();
+            let saida = document.getElementById("saida");
+            saida.textContent = carro.velocidade + ' km/h';
+        }
+
+        window.onload = inicio;
+    </script>
+
+</body>
+</html>
