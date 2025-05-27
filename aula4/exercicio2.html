@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World!</title>
+    <script>
+	window.onload = inicio;
+
+	function inicio() {
+	    let botao = document.getElementById('botao');
+	    botao.addEventListener('click', mostra);
+	}
+
+	function mostra() {
+	    let nome = document.getElementById('nome').value
+        let salario = parseFloat(document.getElementById('salario').value)
+        let vendas = parseInt(document.getElementById('vendas').value)
+        let saida = document.getElementById('saida')
+        
+       for(let i = 1; i < 6 ; i++){
+        salario += vendas * 0.05;
+        saida.innerHTML += '<p>' + 'total de ' + i + ' dias ' + salario +  '</p>'
+        
+       }
+        
+    
+	}
+    </script>
+</head>
+<body>
+    <input type="text" id="nome" placeholder="Insira seu Nome"><br>
+    <input type="text" id="salario" placeholder="Seu salario"><br>
+    <input type="text" id="vendas" placeholder="valor das vendas diarias">
+    <input type="button" id="botao"  value="calcule"><br>
+    <div id="saida"></div>
+    
+</body>
+</html>
