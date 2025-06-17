@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+    <style>
+        .dark {
+            color: white;
+            background-color: black;
+        }
+    </style>
+    <script>
+    window.onload = inicio;
+
+    function inicio() {
+        let botao = document.getElementById('btnGera');
+        botao.addEventListener('click', gera);
+        
+        let botaoMarca = document.getElementById('btnMarca');
+        botaoMarca.addEventListener('click', marca);
+    }
+
+    function gera() {
+        let tabela = document.getElementsByTagName('table')[0];
+        let elementos = '';
+        let marcado = document.getElementById('numero').value;
+
+        elementos += '<tr>';
+        for (var i = 1; i <= 31; i++) {
+            if (i % 7 == 0) {
+                elementos += '</tr><tr>';
+            }
+
+            
+            if (i == marcado) {
+                elementos += `<td class="dark">${i}</td>`;
+            } else {
+                elementos += `<td>${i}</td>`;
+            }
+        }
+        elementos += '</tr>';
+        tabela.innerHTML = elementos;
+    }
+
+    function marca() {
+        let numeroDia = parseInt(document.getElementById('numero').value);
+        
+        
+        if (numeroDia >= 1 && numeroDia <= 31) {
+            gera();  
+        } else {
+            alert('Por favor, insira um número entre 1 e 31!');
+        }
+    }
+    </script>
+</head>
+<body>
+    <table>
+
+    </table>
+    <input type="button" value="Gera" id="btnGera"><br>
+    <label for="">Dia:</label>
+    <input type="text" id="numero" value="0">
+    <input type="button" value="Marca" id="btnMarca">
+</body>
+</html>
