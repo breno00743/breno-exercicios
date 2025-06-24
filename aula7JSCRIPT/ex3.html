@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Soma</title>
+    <script>
+        let x = 1;
+        let saida;
+
+        window.onload = inicio;
+
+        function inicio() {
+            saida = document.getElementById('saida');
+            setInterval(soma, 2000); 
+        }
+
+        function soma() {
+            x = x + x;
+            saida.innerHTML = x;
+        }
+    </script>
+</head>
+<body>
+    <h1>Resultado:</h1>
+    <div id="saida"></div>
+</body>
+</html>

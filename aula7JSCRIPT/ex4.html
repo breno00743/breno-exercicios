@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Cotação Dólar</title>
+</head>
+<body>
+  <input type="date" id="data">
+  <button onclick="buscar()">Buscar</button>
+  <p id="saida"></p>
+
+  <script>
+    function buscar() {
+      let data = document.getElementById('data').value;
+      let partes = data.split('-');
+      let formatada = partes[1] + '-' + partes[2] + '-' + partes[0];
+      let url = "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/" +
+                "CotacaoDolarDia(dataCotacao=@dataCotacao)?@dataCotacao='" + formatada + "'&$top=100&$format=json";
+      fetch(url)
+        .then(r => r.json())
+        .then(d => {
+          document.getElementById('saida').innerText = d.value[0].cotacaoVenda;
+        });
+    }
+  </script>
+</body>
+</html>
