@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>LocalStorage Simples</title>
+</head>
+<body>
+  <h2>Digite seu nome e e-mail</h2>
+
+  Nome: <input type="text" id="nome"><br><br>
+  E-mail: <input type="text" id="email"><br><br>
+
+  <button onclick="salvar()">Salvar</button>
+  <button onclick="mostrar()">Mostrar</button>
+  <button onclick="apagar()">Apagar</button>
+
+  <p id="saida"></p>
+
+  <script>
+    function salvar() {
+      const nome = document.getElementById('nome').value;
+      const email = document.getElementById('email').value;
+      localStorage.setItem('nome', nome);
+      localStorage.setItem('email', email);
+      document.getElementById('saida').textContent = 'Dados salvos.';
+    }
+
+    function mostrar() {
+      const nome = localStorage.getItem('nome');
+      const email = localStorage.getItem('email');
+      if (nome && email) {
+        document.getElementById('saida').textContent = 'Nome: ' + nome + ' | E-mail: ' + email;
+      } else {
+        document.getElementById('saida').textContent = 'Nenhum dado salvo.';
+      }
+    }
+
+    function apagar() {
+      localStorage.removeItem('nome');
+      localStorage.removeItem('email');
+      document.getElementById('saida').textContent = 'Dados apagados.';
+    }
+  </script>
+</body>
+</html>

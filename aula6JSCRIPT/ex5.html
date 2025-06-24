@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS</title>
+  <style>
+    .verde { background-color: lightgreen; }
+    .amarelo { background-color: lightyellow; }
+    .vermelho { background-color: lightcoral; }
+  </style>
+  <script>
+    window.onload = inicio;
+    let i = 0;
+
+    function inicio() {
+      document.getElementById('btnAdiciona').addEventListener('click', adiciona);
+    }
+
+    function adiciona() {
+      let nomeTarefa = document.getElementById('novaTarefa').value.trim();
+      if (nomeTarefa === '') return;
+
+      let divTarefas = document.getElementById('tarefas');
+
+      let selectId = `situacao${i}`;
+      let labelId = `rotulo${i}`;
+
+      divTarefas.innerHTML += `
+        <select id="${selectId}">
+          <option value="inicio">Aguardando</option>
+          <option value="atribuida">Em andamento</option>
+          <option value="parada">Pausada</option>
+          <option value="rejeitada">Rejeitada</option>
+          <option value="fim">Concluída</option>
+        </select>
+        <label id="${labelId}" for="${selectId}">${nomeTarefa}</label><br>
+      `;
+
+      let select = document.getElementById(selectId);
+      let label = document.getElementById(labelId);
+
+      select.addEventListener('change', function () {
+        let valor = this.value;
+
+        label.className = '';
+
+        if (valor === 'atribuida') {
+          label.classList.add('verde');
+        } else if (valor === 'parada') {
+          label.classList.add('amarelo');
+        } else if (valor === 'rejeitada') {
+          label.classList.add('vermelho');
+        } else if (valor === 'fim') {
+          let data = new Date().toLocaleString('pt-BR');
+          document.getElementById('tabela').innerHTML += `
+            <tr>
+              <td>${label.textContent}</td>
+              <td>${data}</td>
+            </tr>
+          `;
+        }
+      });
+
+      i++;
+      document.getElementById('novaTarefa').value = '';
+    }
+  </script>
+</head>
+<body>
+  <h2>Nova Tarefa</h2>
+  <input type="text" id="novaTarefa" placeholder="Digite o nome da tarefa">
+  <input type="button" id="btnAdiciona" value="Adicionar"><br><br>
+
+  <div id="tarefas"></div>
+
+  <h2>Tarefas Concluídas</h2>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Nome da Tarefa</th>
+        <th>Data de Conclusão</th>
+      </tr>
+    </thead>
+    <tbody id="tabela"></tbody>
+  </table>
+</body>
+</html>
