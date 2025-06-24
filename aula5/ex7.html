@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+    <style>
+	.dark {
+	    color: white;
+	    background-color:  black;
+	}
+    </style>
+    <script>
+	window.onload = inicio;
+
+	function inicio() {
+	    let botao = document.getElementById('btnGera');
+	    botao.addEventListener('click', gera);
+
+        let marca = document.getElementById('btnMarca');
+        marca.addEventListener('click', marcaDia);
+
+	}
+	function gera() {
+	    let tabela = document.getElementsByTagName('table')[0];
+	    let elementos = '';
+
+	    elementos += '<tr>';
+	    for(var i = 1; i < 32; i++) {
+		if( i % 7 == 0 ) {
+		elementos += '</tr><tr>';
+		} 
+		elementos += '<td>' + i + '</td>';
+
+	    }
+	    elementos += '</tr>';
+	    tabela.innerHTML = elementos;
+	 }
+
+    function marcaDia() {
+        let dia = parseInt(document.getElementById('numero').value);
+        let tds = document.getElementsByTagName('td');
+
+        for (let i = 0; i < tds.length; i++) {
+            if (parseInt(tds[i].textContent) === dia) {
+                tds[i].classList.add('dark');
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+    <table>
+
+    </table>
+    <input type="button" value="Gera" id="btnGera"><br>
+    <label for="">Dia:</label>
+    <input type="text" id="numero" value="0">
+    <input type="button" value="Marca" id="btnMarca">
+</body>
+</html>
